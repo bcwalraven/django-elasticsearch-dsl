@@ -179,7 +179,7 @@ class DocType(DSLDocument):
         else:
             return self.bulk(*args, **kwargs)
 
-    def update(self, thing, refresh=None, action='index', parallel=False, **kwargs):
+    def _update(self, thing, refresh=None, action='index', parallel=False, **kwargs):
         """
         Update each document in ES for a model, iterable of models or queryset
         """
