@@ -108,7 +108,7 @@ class DocumentRegistry(object):
                 related = None
 
             if related is not None:
-                doc_instance.update(related, **kwargs)
+                doc_instance._update(related, **kwargs)
 
     def delete_related(self, instance, **kwargs):
         """
@@ -125,7 +125,7 @@ class DocumentRegistry(object):
                 related = None
 
             if related is not None:
-                doc_instance.update(related, **kwargs)
+                doc_instance._update(related, **kwargs)
 
     def update(self, instance, **kwargs):
         """
@@ -138,7 +138,7 @@ class DocumentRegistry(object):
         if instance.__class__ in self._models:
             for doc in self._models[instance.__class__]:
                 if not doc.django.ignore_signals:
-                    doc().update(instance, **kwargs)
+                    doc()._update(instance, **kwargs)
 
     def delete(self, instance, **kwargs):
         """
