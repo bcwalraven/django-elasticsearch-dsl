@@ -114,7 +114,7 @@ class Command(BaseCommand):
                 "(parallel)" if parallel else "")
             )
             qs = doc().get_indexing_queryset()
-            doc().update(qs, parallel=parallel)
+            doc()._update(qs, parallel=parallel)
 
     def _delete(self, models, options):
         index_names = [index._name for index in registry.get_indices(models)]
